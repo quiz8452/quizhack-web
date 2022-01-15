@@ -4,13 +4,14 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
-    apiKey: 'dummy',
-    authDomain: 'ngblogsite.firebaseapp.com',
-    databaseURL: 'https://ngblogsite.firebaseio.com',
-    projectId: 'ngblogsite',
-    storageBucket: 'ngblogsite.appspot.com',
-    messagingSenderId: '829308068339'
+  firebaseConfig :{
+    apiKey: "AIzaSyAmnCk33P9TLCcnU8ea01BM1jp1nVM5v-A",
+    authDomain: "tech-blog-55c53.firebaseapp.com",
+    projectId: "tech-blog-55c53",
+    storageBucket: "tech-blog-55c53.appspot.com",
+    messagingSenderId: "373801632801",
+    appId: "1:373801632801:web:d0af7dba5ce86417680f60",
+    measurementId: "G-PMBC0124LD"
   }
 };
 
