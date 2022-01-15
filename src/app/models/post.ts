@@ -4,7 +4,7 @@ export class Post {
     content: string;
     author: string;
     createdDate: any;
-
+    imageUrl:string;
     constructor() {
         this.title = '';
         this.content = '';

@@ -5,8 +5,18 @@
 </ng-template>
 <ng-container *ngIf="blogPost$ | async as blogPost; else loading">
   <ng-container *ngIf="blogPost?.length > 0; else noData">
-    <div *ngFor="let post of blogPost | paginate: config">
+    <div style="display: inline-block;" class="col-sm-6 mb-2 " *ngFor="let post of blogPost | paginate: config">
       <mat-card class="mat-elevation-z2 mb-3">
+        <mat-card-content>
+          <a  [routerLink]="['/blog/', post.postId, post.title | slug]">
+            <div class="view overlay hm-white-slight">
+              <img width="100%" [src]="post.imageUrl" alt="" height="200px" >
+              <a>
+                <div class="mask waves-effect waves-light" mdbRippleRadius></div>
+              </a>
+            </div>
+          </a>
+        </mat-card-content>
         <mat-card-content>
           <a
             class="blog-title"
@@ -21,20 +31,33 @@
         <mat-divider></mat-divider>
         <mat-card-actions align="end">
           <ng-container *ngIf="(appUser$ | async)?.isAdmin">
-            <button
-              mat-raised-button
+             <!-- <button
+              mat-button
               color="accent"
               [routerLink]="['/editpost', post.postId]"
             >
               Edit
+            </button> -->
+            <button mat-button color="accent" [routerLink]="['/editpost', post.postId]">
+              <i class="fa fa-edit" aria-hidden="true"></i>
             </button>
-            <button
+            <!-- <button
+              mat-raised-button
+              color="warn"
+              (click)="delete(post.postId)"
+            >
+              Edit
+            </button> -->
+            <button mat-button color="warn" (click)="delete(post.postId)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+            <!-- <button
               mat-raised-button
               color="warn"
               (click)="delete(post.postId)"
             >
               Delete
-            </button>
+            </button> -->
           </ng-container>
           <span class="spacer"></span>
           <button
@@ -47,11 +70,13 @@
         </mat-card-actions>
       </mat-card>
     </div>
+    <div>
     <mat-divider></mat-divider>
     <app-paginator
       [pageSizeOptions]="pageSizeOptions"
       [config]="config"
     ></app-paginator>
+  </div>
   </ng-container>
   <ng-template #noData>
     <h3>No data found</h3>

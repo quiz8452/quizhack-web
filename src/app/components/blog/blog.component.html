@@ -1,8 +1,13 @@
 <ng-container *ngIf="postData$ | async as postData; else loader">
   <mat-card class="mt-3 p-4 mat-elevation-z2 bg-white">
     <mat-card-title>
-      <h1 class="my-2 display-4">{{ postData?.title }}</h1></mat-card-title
+      <h1 class="my-2 display-5">{{ postData?.title }}</h1></mat-card-title
     >
+    <mat-card-content>
+      <div class="view hm-zoom z-depth-2" style="cursor: pointer">
+        <img [src]="postData.imageUrl" [alt]="postData.title" width="100%" class="img-fluid rounded">
+      </div>
+    </mat-card-content>
     <mat-card-subtitle class="my-4">
       <i class="fas fa-calendar" aria-hidden="true"></i>
       {{ postData?.createdDate | date: "longDate" }}
