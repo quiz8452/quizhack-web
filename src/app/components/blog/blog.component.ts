@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 import { BlogService } from "src/app/services/blog.service";
 import { Observable, Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: "app-blog",
@@ -13,9 +14,12 @@ import { takeUntil } from "rxjs/operators";
 export class BlogComponent implements OnDestroy {
   postData$: Observable<Post>;
   postId;
+  safeUrl;
+  videoId = 'XqZsoesa55w';
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private route: ActivatedRoute, private blogService: BlogService) {
+  constructor(private route: ActivatedRoute, private blogService: BlogService, private _sanitizer : DomSanitizer) {
+    // this.initializePlayer();
     this.route.paramMap
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params: ParamMap) => {
@@ -28,4 +32,5 @@ export class BlogComponent implements OnDestroy {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
+
 }

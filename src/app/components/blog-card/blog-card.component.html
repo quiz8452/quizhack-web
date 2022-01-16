@@ -22,7 +22,7 @@
             class="blog-title"
             [routerLink]="['/blog/', post.postId, post.title | slug]"
           >
-            <h2>{{ post.title }}</h2>
+            <h4>{{ post.title }}</h4>
           </a>
         </mat-card-content>
         <mat-card-content>
@@ -72,8 +72,8 @@
     </div>
     <div>
     <mat-divider></mat-divider>
+    <!-- [pageSizeOptions]="pageSizeOptions" -->
     <app-paginator
-      [pageSizeOptions]="pageSizeOptions"
       [config]="config"
     ></app-paginator>
   </div>

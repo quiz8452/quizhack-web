@@ -57,9 +57,12 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
   setPostFormData(postFormData) {
     this.postData.title = postFormData.title;
     this.postData.content = postFormData.content;
-  }
+    this.postData.imageUrl = postFormData.imageUrl;
+    this.postData.videoId = postFormData.videoId;
+    }
 
   saveBlogPost() {
+    console.log(this.postData, "POSTDATA");
     if (this.postId) {
       this.blogService.updatePost(this.postId, this.postData).then(() => {
         this.router.navigate(["/"]);

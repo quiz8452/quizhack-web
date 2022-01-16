@@ -5,6 +5,7 @@ export class Post {
     author: string;
     createdDate: any;
     imageUrl:string;
+    videoId :string;
     constructor() {
         this.title = '';
         this.content = '';

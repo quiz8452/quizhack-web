@@ -28,6 +28,9 @@ import { ShareButtonsConfig, ShareModule } from "ngx-sharebuttons";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { AngularFireModule } from "@angular/fire/compat";
+import { VideoComponent } from './components/video/video.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 const customConfig: ShareButtonsConfig = {
   autoSetMeta: true,
@@ -49,10 +52,12 @@ const customConfig: ShareButtonsConfig = {
     SocialShareComponent,
     PaginatorComponent,
     AuthorProfileComponent,
+    VideoComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    YouTubePlayerModule,
     ShareIconsModule,
     NgxPaginationModule,
     HttpClientModule,
@@ -84,5 +89,9 @@ const customConfig: ShareButtonsConfig = {
     ),
   ],
   bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule {}

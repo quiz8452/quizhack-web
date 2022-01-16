@@ -27,8 +27,8 @@ export class BlogCardComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private snackBarService: SnackbarService
   ) {
-    this.pageSizeOptions = [2, 4, 6];
-    const pageSize = sessionStorage.getItem("pageSize");
+    this.pageSizeOptions = [6];
+    const pageSize =6;
     this.config = {
       currentPage: 1,
       itemsPerPage: pageSize ? +pageSize : this.pageSizeOptions[0],
