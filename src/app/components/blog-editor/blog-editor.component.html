@@ -25,36 +25,36 @@
     </span>
     <br />
     <input
-    type="text"
-    class="blogHeader"
-    placeholder="Add Image Url..."
-    class="form-control"
-    name="imageUrl"
-    [(ngModel)]="postData.imageUrl"
-    #postTitle="ngModel"
-  />
-  <!-- <span
+      type="text"
+      class="blogHeader"
+      placeholder="Add Image Url..."
+      class="form-control"
+      name="imageUrl"
+      [(ngModel)]="postData.imageUrl"
+      #postTitle="ngModel"
+    />
+    <!-- <span
     class="text-danger"
     *ngIf="myForm.submitted && postTitle.errors?.required"
   >
     Image URl is required
   </span> -->
-<br/>
+    <br />
 
-<input
-    type="text"
-    class="blogHeader"
-    placeholder="Add Video Id..."
-    class="form-control"
-    name="videoId"
-    [(ngModel)]="postData.videoId"
-    #postTitle="ngModel"
-/>
-<br/>
+    <input
+      type="text"
+      class="blogHeader"
+      placeholder="Add Video Id..."
+      class="form-control"
+      name="videoId"
+      [(ngModel)]="postData.videoId"
+      #postTitle="ngModel"
+    />
+    <br />
 
-<div style="text-align: center;">
-  <app-video style="margin: auto;" [videoId]="postData?.videoId"></app-video>
-</div>
+    <div style="text-align: center">
+      <app-video style="margin: auto" [videoId]="postData?.videoId"></app-video>
+    </div>
 
     <div class="form-group">
       <ckeditor
@@ -66,7 +66,7 @@
         [editor]="Editor"
       ></ckeditor>
     </div>
-  
+
     <mat-card-actions>
       <div fxflex></div>
       <button type="submit" mat-raised-button color="primary">Save</button>

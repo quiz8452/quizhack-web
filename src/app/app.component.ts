@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router) { }
-    videoId = 'A66TYFdz8YA';
   ngOnInit() {
     this.authService.appUser$.subscribe(user => {
       if (!user) {

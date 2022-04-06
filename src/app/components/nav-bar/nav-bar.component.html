@@ -1,16 +1,25 @@
-<mat-toolbar class="nav-bar mat-elevation-z2">
+<mat-toolbar class="nav-bar app-theme mat-elevation-z2">
   <button mat-button [routerLink]="['/']">Home</button>
-  <ng-container *ngIf="appUser">
-    <button style="min-width: 30px;"
+  <ng-container *ngIf="appUser?.isAdmin">
+    <button
+      style="min-width: 30px"
       mat-button
       [routerLinkActive]="['link-active']"
       [routerLink]="['/addpost']"
     >
-    <i class="fa fa-plus" aria-hidden="true"></i>
+      <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
   </ng-container>
   <span class="spacer"></span>
-  <button style="min-width: 10px;"  mat-button>
+  <!-- <button
+    style="min-width: 30px"
+    mat-button
+    [routerLinkActive]="['link-active']"
+    [routerLink]="['/addpost']"
+  >
+    <i class="fa fa-heart" aria-hidden="true"></i>
+  </button> -->
+  <button style="min-width: 10px" mat-button>
     <a
       href="https://www.youtube.com/channel/UCELt2uJpVNBOfsUNQ68j-qA"
       target="_blank"
@@ -22,10 +31,12 @@
   </ng-template>
   <ng-container *ngIf="appUser; else anonymousUser">
     <img mat-card-avatar class="user-avatar" src="{{ appUser.photoURL }}" />
+    <!-- {{ appUser.name | titlecase }} -->
     <button mat-button [matMenuTriggerFor]="menu">
-      {{ appUser.name | titlecase }}<mat-icon>arrow_drop_down</mat-icon>
+      <mat-icon>arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+      <b disabled mat-menu-item>{{ appUser.name | titlecase }}</b>
       <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
   </ng-container>
