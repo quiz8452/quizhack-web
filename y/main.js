@@ -1161,7 +1161,7 @@ NavBarComponent.ɵfac = function NavBarComponent_Factory(t) { return new (t || N
 NavBarComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: NavBarComponent, selectors: [["app-nav-bar"]], decls: 12, vars: 5, consts: [[1, "nav-bar", "app-theme", "mat-elevation-z2"], ["mat-button", "", 3, "routerLink"], [4, "ngIf"], [1, "spacer"], ["mat-button", "", 2, "min-width", "10px"], ["href", "https://www.youtube.com/channel/UCELt2uJpVNBOfsUNQ68j-qA", "target", "_blank"], ["aria-hidden", "true", 1, "fab", "fa-youtube"], ["anonymousUser", ""], [4, "ngIf", "ngIfElse"], ["mat-button", "", 2, "min-width", "30px", 3, "routerLinkActive", "routerLink"], ["aria-hidden", "true", 1, "fa", "fa-plus"], ["mat-button", "", 3, "click"], ["mat-card-avatar", "", 1, "user-avatar", 3, "src"], ["mat-button", "", 3, "matMenuTriggerFor"], ["menu", "matMenu"], ["disabled", "", "mat-menu-item", ""], ["mat-menu-item", "", 3, "click"]], template: function NavBarComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "mat-toolbar", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "button", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Home");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Tech Keys");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, NavBarComponent_ng_container_3_Template, 3, 4, "ng-container", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "span", 3);
