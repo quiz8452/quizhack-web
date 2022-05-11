@@ -64,6 +64,10 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
   saveBlogPost() {
     console.log(this.postData, "POSTDATA");
     if (this.postId) {
+      this.postData.createdDate = this.datePipe.transform(
+        Date.now(),
+        "MM-dd-yyyy HH:mm"
+      );
       this.blogService.updatePost(this.postId, this.postData).then(() => {
         this.router.navigate(["/"]);
       });

@@ -1,43 +1,113 @@
-<mat-toolbar class="nav-bar app-theme mat-elevation-z2">
-  <button mat-button [routerLink]="['/']">Tech Keys</button>
-  <ng-container *ngIf="appUser?.isAdmin">
-    <button
-      style="min-width: 30px"
-      mat-button
-      [routerLinkActive]="['link-active']"
-      [routerLink]="['/addpost']"
-    >
-      <i class="fa fa-plus" aria-hidden="true"></i>
-    </button>
-  </ng-container>
-  <span class="spacer"></span>
-  <!-- <button
-    style="min-width: 30px"
-    mat-button
-    [routerLinkActive]="['link-active']"
-    [routerLink]="['/addpost']"
-  >
-    <i class="fa fa-heart" aria-hidden="true"></i>
-  </button> -->
-  <button style="min-width: 10px" mat-button>
-    <a
-      href="https://www.youtube.com/channel/UCELt2uJpVNBOfsUNQ68j-qA"
-      target="_blank"
-      ><i class="fab fa-youtube" aria-hidden="true"></i> Youtube</a
-    >
-  </button>
-  <ng-template #anonymousUser>
-    <button mat-button (click)="login()">Login with Google</button>
-  </ng-template>
-  <ng-container *ngIf="appUser; else anonymousUser">
-    <img mat-card-avatar class="user-avatar" src="{{ appUser.photoURL }}" />
-    <!-- {{ appUser.name | titlecase }} -->
-    <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>arrow_drop_down</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <b disabled mat-menu-item>{{ appUser.name | titlecase }}</b>
-      <button mat-menu-item (click)="logout()">Logout</button>
-    </mat-menu>
-  </ng-container>
-</mat-toolbar>
+<div style="height: 100vh">
+  <mat-toolbar class="nav-bar app-theme mat-elevation-z2">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <!-- <span class="profile-image">
+        <a href="#">
+          <img src="../../../assets/QUIZHACK.png" alt="Web Icon" />
+        </a>
+      </span> -->
+
+      <img
+        mat-card-avatar
+        class="icon-web"
+        src="../../../assets/QUIZHACK.png"
+      />
+
+      <div fxShow="true" fxHide.lt-md="true">
+        <button mat-button [routerLink]="['/']">Quiz Hack</button>
+
+        <button mat-button [routerLink]="['/quiz', 'Amazon']">
+          Amazon Quiz
+        </button>
+
+        <button mat-button [routerLink]="['/quiz', 'Flipkart']">
+          Flipkart Quiz
+        </button>
+
+        <button mat-button [routerLink]="['/disclaimer']">Disclaimer</button>
+      </div>
+      <!-- <img mat-card-avatar class="user-avatar" src="/src/QUIZHACK.png" /> -->
+      <!-- *ngIf="appUser?.isAdmin" -->
+      <ng-container>
+        <button
+          style="min-width: 30px"
+          mat-button
+          [routerLinkActive]="['link-active']"
+          [routerLink]="['/addpost']"
+        >
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+      </ng-container>
+      <span class="spacer"></span>
+
+      <button style="min-width: 10px" mat-button>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.hostelmanager.quizhackk&hl=en_IN&gl=US"
+          target="_blank"
+          ><i class="fab fa-google-play" aria-hidden="true"></i> Play Store</a
+        >
+      </button>
+      <ng-template #anonymousUser>
+        <button mat-button (click)="login()">Login with Google</button>
+      </ng-template>
+      <ng-container *ngIf="appUser; else anonymousUser">
+        <img mat-card-avatar class="user-avatar" src="{{ appUser.photoURL }}" />
+        <!-- {{ appUser.name | titlecase }} -->
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <b disabled mat-menu-item>{{ appUser.name | titlecase }}</b>
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </ng-container>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav class="sideNav" #sidenav>
+      <mat-nav-list class="justify-content-center">
+        <a
+          class="side-nav-content"
+          (click)="sidenav.toggle()"
+          href=""
+          mat-list-item
+          >Close</a
+        >
+
+        <button class="btn side-nav-content" mat-list-item [routerLink]="['/']">
+          Home
+        </button>
+
+        <button
+          class="btn side-nav-content"
+          mat-list-item
+          [routerLink]="['/quiz', 'Amazon']"
+        >
+          Amazon Quiz
+        </button>
+
+        <button
+          class="btn side-nav-content"
+          mat-list-item
+          [routerLink]="['/quiz', 'Flipkart']"
+        >
+          Flipkart Quiz
+        </button>
+
+        <button class="btn side-nav-content" mat-list-item [routerLink]="['/']">
+          Disclaimer
+        </button>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

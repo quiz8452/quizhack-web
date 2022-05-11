@@ -1,30 +1,49 @@
 <ng-container *ngIf="postData$ | async as postData; else loader">
   <mat-card class="mt-3 p-4 mat-elevation-z2 bg-white">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7838422947579522"
-     crossorigin="anonymous"></script>
     <mat-card-title>
       <h3 class="my-2 display-6">{{ postData?.title }}</h3></mat-card-title
     >
     <mat-card-content>
-      <div style="text-align: center;" class="view hm-zoom z-depth-2" style="cursor: pointer">
-        <img style="margin: auto;" [src]="postData.imageUrl" [alt]="postData.title" width="100%"  class="image-fluid rounded">
+      <div
+        style="text-align: center"
+        class="view hm-zoom z-depth-2"
+        style="cursor: pointer"
+      >
+        <!-- <img
+          style="margin: auto"
+          [src]="postData.imageUrl"
+          [alt]="postData.title"
+          width="100%"
+          class="image-fluid rounded"
+        /> -->
       </div>
     </mat-card-content>
     <mat-card-subtitle class="my-4">
+      Last Updated On :
       <i class="fas fa-calendar" aria-hidden="true"></i>
       {{ postData?.createdDate | date: "longDate" }}
       <i class="fas fa-user ml-2" aria-hidden="true"></i>
       {{ postData?.author | titlecase }}
     </mat-card-subtitle>
     <mat-divider></mat-divider>
-   
+
     <mat-card-content class="py-3 align-items-center align-content-center">
-     
-      <div class="text-align-para" [innerHTML]="postData?.content"></div>
-      <div style="text-align: center;">
-        <app-video style="margin: auto;" [videoId]="postData?.videoId"></app-video>
+      <!-- <div class="text-align-para" [innerHTML]="postData?.content"></div> -->
+      <ckeditor
+        name="myckeditor"
+        [config]="ckeConfig"
+        [(ngModel)]="postData.content"
+        #myckeditor="ngModel"
+        debounce="500"
+        [editor]="Editor"
+      ></ckeditor>
+      <div style="text-align: center">
+        <app-video
+          style="margin: auto"
+          [videoId]="postData?.videoId"
+        ></app-video>
       </div>
-      
+
       <mat-divider></mat-divider>
     </mat-card-content>
   </mat-card>

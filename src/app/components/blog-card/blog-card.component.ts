@@ -19,7 +19,8 @@ export class BlogCardComponent implements OnInit, OnDestroy {
   blogPost$: Observable<Post[]>;
   appUser$ = this.authService.appUser$;
   private unsubscribe$ = new Subject<void>();
-
+  quizTitle = "Amazon";
+  amazonOrFlipkart;
   constructor(
     private blogService: BlogService,
     private commentService: CommentService,
@@ -27,6 +28,13 @@ export class BlogCardComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private snackBarService: SnackbarService
   ) {
+    
+    this.route.paramMap
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe((params: ParamMap) => {
+      this.quizTitle = params.get("id");
+    });
+
     this.pageSizeOptions = [6];
     const pageSize =6;
     this.config = {

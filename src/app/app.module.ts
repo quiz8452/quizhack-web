@@ -31,6 +31,17 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { VideoComponent } from './components/video/video.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FooterComponent } from "./components/footer/footer.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { IntroComponent } from "./components/intro/intro.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { DisclaimerComponent } from "./components/disclaimer/disclaimer.component";
+
 
 const customConfig: ShareButtonsConfig = {
   autoSetMeta: true,
@@ -53,6 +64,10 @@ const customConfig: ShareButtonsConfig = {
     PaginatorComponent,
     AuthorProfileComponent,
     VideoComponent,
+    FooterComponent,
+    HeaderComponent,
+    IntroComponent,
+    DisclaimerComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -68,6 +83,14 @@ const customConfig: ShareButtonsConfig = {
     NgMaterialModule,
     CKEditorModule,
     FormsModule,
+    MatSidenavModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    FlexLayoutModule,
     RouterModule.forRoot(
       [
         { path: "", component: HomeComponent, pathMatch: "full" },
@@ -82,7 +105,15 @@ const customConfig: ShareButtonsConfig = {
           component: BlogEditorComponent,
           canActivate: [AdminAuthGuard],
         },
+        {
+          path: "disclaimer",
+          component: DisclaimerComponent
+        },
         { path: "blog/:id/:slug", component: BlogComponent },
+        {
+          path: "quiz/:id",
+          component: BlogCardComponent
+        },
         { path: "**", component: HomeComponent },
       ],
       { relativeLinkResolution: "legacy" }

@@ -3,6 +3,16 @@
     <mat-spinner></mat-spinner>
   </div>
 </ng-template>
+
+<h1 class="mt-2">{{ quizTitle }} Quiz</h1>
+<hr />
+
+<!-- <header class="d-flex justify-content-center heading-title">
+  <h1 style="color: azure" class="display-4 font-weight-bold">
+    {{ quizTitle }} Quiz
+  </h1>
+</header> -->
+
 <ng-container *ngIf="blogPost$ | async as blogPost; else loading">
   <ng-container *ngIf="blogPost?.length > 0; else noData">
     <div
@@ -14,7 +24,7 @@
         <mat-card-content>
           <a [routerLink]="['/blog/', post.postId, post.title | slug]">
             <div class="view overlay hm-white-slight">
-              <img width="100%" [src]="post.imageUrl" alt="" height="200px" />
+              <!-- <img width="100%" [src]="post.imageUrl" alt="" height="200px" /> -->
               <a>
                 <div
                   class="mask waves-effect waves-light"
