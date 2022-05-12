@@ -9179,6 +9179,10 @@ body {
   padding-top: 60px;
   max-width: 1140px;
 }
+.container-footer {
+  padding-top: 30px;
+  max-width: 1140px;
+}
 pre {
   display: block;
   padding: 9.5px;

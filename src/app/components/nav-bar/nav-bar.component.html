@@ -10,13 +10,13 @@
           <img src="../../../assets/QUIZHACK.png" alt="Web Icon" />
         </a>
       </span> -->
-
-      <img
-        mat-card-avatar
-        class="icon-web"
-        src="../../../assets/QUIZHACK.png"
-      />
-
+      <a href="/">
+        <img
+          mat-card-avatar
+          class="icon-web"
+          src="../../../assets/QUIZHACK.png"
+        />
+      </a>
       <div fxShow="true" fxHide.lt-md="true">
         <button mat-button [routerLink]="['/']">Quiz Hack</button>
 
@@ -32,7 +32,7 @@
       </div>
       <!-- <img mat-card-avatar class="user-avatar" src="/src/QUIZHACK.png" /> -->
       <!-- *ngIf="appUser?.isAdmin" -->
-      <ng-container>
+      <ng-container *ngIf="appUser?.isAdmin">
         <button
           style="min-width: 30px"
           mat-button
@@ -48,11 +48,14 @@
         <a
           href="https://play.google.com/store/apps/details?id=com.hostelmanager.quizhackk&hl=en_IN&gl=US"
           target="_blank"
-          ><i class="fab fa-google-play" aria-hidden="true"></i> Play Store</a
+          ><i class="fab fa-google-play" aria-hidden="true"></i>
+          <span fxShow="true" fxHide.lt-md="true">Play Store</span></a
         >
       </button>
       <ng-template #anonymousUser>
-        <button mat-button (click)="login()">Login with Google</button>
+        <button mat-button (click)="login()">
+          <i class="fab fa-google mr-1"></i> Sign In
+        </button>
       </ng-template>
       <ng-container *ngIf="appUser; else anonymousUser">
         <img mat-card-avatar class="user-avatar" src="{{ appUser.photoURL }}" />
@@ -79,11 +82,17 @@
           >Close</a
         >
 
-        <button class="btn side-nav-content" mat-list-item [routerLink]="['/']">
+        <button
+          (click)="toggle()"
+          class="btn side-nav-content"
+          mat-list-item
+          [routerLink]="['/']"
+        >
           Home
         </button>
 
         <button
+          (click)="toggle()"
           class="btn side-nav-content"
           mat-list-item
           [routerLink]="['/quiz', 'Amazon']"
@@ -92,6 +101,7 @@
         </button>
 
         <button
+          (click)="toggle()"
           class="btn side-nav-content"
           mat-list-item
           [routerLink]="['/quiz', 'Flipkart']"
@@ -99,14 +109,22 @@
           Flipkart Quiz
         </button>
 
-        <button class="btn side-nav-content" mat-list-item [routerLink]="['/']">
+        <button
+          (click)="toggle()"
+          class="btn side-nav-content"
+          mat-list-item
+          [routerLink]="['/disclaimer']"
+        >
           Disclaimer
         </button>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
       <div class="container">
-        <router-outlet></router-outlet>
+        <mat-card class="mat-elevation-z2 mb-3">
+          <router-outlet></router-outlet>
+          <app-footer></app-footer>
+        </mat-card>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
