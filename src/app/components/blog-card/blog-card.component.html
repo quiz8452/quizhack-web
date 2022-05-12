@@ -17,7 +17,7 @@
   <ng-container *ngIf="blogPost?.length > 0; else noData">
     <div
       style="display: inline-block"
-      class="col-sm-6 mb-2"
+      class="mb-2"
       *ngFor="let post of blogPost | paginate: config"
     >
       <mat-card class="mat-elevation-z2 mb-3">
