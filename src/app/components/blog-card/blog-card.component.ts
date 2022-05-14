@@ -32,7 +32,8 @@ export class BlogCardComponent implements OnInit, OnDestroy {
     this.route.paramMap
     .pipe(takeUntil(this.unsubscribe$))
     .subscribe((params: ParamMap) => {
-      this.quizTitle = params.get("id");
+      this.quizTitle = params.get("quiz");
+      sessionStorage.setItem("quiz", this.findCollection())
     });
 
     this.pageSizeOptions = [6];

@@ -16,7 +16,11 @@ export class PaginatorComponent {
   constructor(private router: Router) {}
 
   pageChange(newPage: number) {
-    this.router.navigate(["/page/", newPage]);
+    this.router.navigate(["/quiz/" + this.findPage(sessionStorage.getItem("quiz")) + "/", newPage]);
+  }
+
+  findPage(quiz:string) {
+    return quiz == 'amazon' ? "Amazon" : "Flipkart";
   }
 
   changePageItemCount(selectedItem) {

@@ -111,7 +111,11 @@ const customConfig: ShareButtonsConfig = {
         },
         { path: "blog/:id/:quiz/:slug", component: BlogComponent },
         {
-          path: "quiz/:id",
+          path: "quiz/:quiz",
+          component: BlogCardComponent
+        },
+        {
+          path: "quiz/:quiz/:pagenum",
           component: BlogCardComponent
         },
         { path: "**", component: HomeComponent },

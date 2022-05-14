@@ -198,7 +198,11 @@ AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_23__["ɵ�
                 },
                 { path: "blog/:id/:quiz/:slug", component: _components_blog_blog_component__WEBPACK_IMPORTED_MODULE_4__.BlogComponent },
                 {
-                    path: "quiz/:id",
+                    path: "quiz/:quiz",
+                    component: _components_blog_card_blog_card_component__WEBPACK_IMPORTED_MODULE_10__.BlogCardComponent
+                },
+                {
+                    path: "quiz/:quiz/:pagenum",
                     component: _components_blog_card_blog_card_component__WEBPACK_IMPORTED_MODULE_10__.BlogCardComponent
                 },
                 { path: "**", component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_6__.HomeComponent },
@@ -443,7 +447,8 @@ class BlogCardComponent {
         this.route.paramMap
             .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_10__.takeUntil)(this.unsubscribe$))
             .subscribe((params) => {
-            this.quizTitle = params.get("id");
+            this.quizTitle = params.get("quiz");
+            sessionStorage.setItem("quiz", this.findCollection());
         });
         this.pageSizeOptions = [6];
         const pageSize = 6;
@@ -1816,7 +1821,10 @@ class PaginatorComponent {
         this.router = router;
     }
     pageChange(newPage) {
-        this.router.navigate(["/page/", newPage]);
+        this.router.navigate(["/quiz/" + this.findPage(sessionStorage.getItem("quiz")) + "/", newPage]);
+    }
+    findPage(quiz) {
+        return quiz == 'amazon' ? "Amazon" : "Flipkart";
     }
     changePageItemCount(selectedItem) {
         sessionStorage.setItem("pageSize", selectedItem.value);
