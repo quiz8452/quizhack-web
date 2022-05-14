@@ -6,6 +6,7 @@ export class Post {
     createdDate: any;
     imageUrl:string;
     videoId :string;
+    quiz :string;
     constructor() {
         this.title = '';
         this.content = '';

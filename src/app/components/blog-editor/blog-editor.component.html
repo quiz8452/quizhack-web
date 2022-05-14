@@ -33,6 +33,14 @@
       [(ngModel)]="postData.imageUrl"
       #postTitle="ngModel"
     />
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Quiz</mat-label>
+      <select matNativeControl [(ngModel)]="postData.quiz" required name="quiz">
+        <option value="amazon">Amazon</option>
+        <option value="flipkart">Flipkart</option>
+      </select>
+    </mat-form-field>
     <!-- <span
     class="text-danger"
     *ngIf="myForm.submitted && postTitle.errors?.required"

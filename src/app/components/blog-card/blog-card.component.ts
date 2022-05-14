@@ -48,13 +48,17 @@ export class BlogCardComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params: ParamMap) => {
         this.config.currentPage = params.get("pagenum");
-        this.blogPost$ = this.blogService.getAllPosts();
+        this.blogPost$ = this.blogService.getAllPosts(this.findCollection());
       });
+  }
+
+  findCollection() {
+    return this.quizTitle == 'Amazon' ? 'amazon' : 'flipkart';
   }
 
   delete(postId: string) {
     if (confirm("Are you sure?")) {
-      this.blogService.deletePost(postId).then(() => {
+      this.blogService.deletePost(postId, this.findCollection()).then(() => {
         this.commentService.deleteAllCommentForBlog(postId);
         this.snackBarService.showSnackBar("Blog post deleted successfully");
       });

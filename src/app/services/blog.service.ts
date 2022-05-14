@@ -11,13 +11,21 @@ export class BlogService {
   constructor(private db: AngularFirestore) {}
 
   createPost(post: Post) {
+    
     const postData = JSON.parse(JSON.stringify(post));
-    return this.db.collection("blogs").add(postData);
+    if(post.quiz === 'amazon')
+      return this.db.collection("amazonQuiz").add(postData);
+
+      return this.db.collection("flipkartQuiz").add(postData);
   }
 
-  getAllPosts(): Observable<Post[]> {
+  findCollection(quiz:string) {
+    return quiz =='amazon' ? "amazonQuiz" : "flipkartQuiz"
+  }
+
+  getAllPosts(quiz): Observable<Post[]> {
     const blogs = this.db
-      .collection<Post>("blogs", (ref) => ref.orderBy("createdDate", "desc"))
+      .collection<Post>(this.findCollection(quiz), (ref) => ref.orderBy("createdDate", "desc"))
       .snapshotChanges()
       .pipe(
         map((actions) => {
@@ -30,17 +38,18 @@ export class BlogService {
     return blogs;
   }
 
-  getPostbyId(id: string): Observable<Post> {
-    const blogDetails = this.db.doc<Post>("blogs/" + id).valueChanges();
+  getPostbyId(id: string, quiz:string): Observable<Post> {
+    const blogDetails = this.db.doc<Post>(this.findCollection(quiz) + "/" + id).valueChanges();
     return blogDetails;
   }
 
   updatePost(postId: string, post: Post) {
     const putData = JSON.parse(JSON.stringify(post));
-    return this.db.doc("blogs/" + postId).update(putData);
+    
+    return this.db.doc( this.findCollection(post.quiz) + "/" + postId).update(putData);
   }
 
-  deletePost(postId: string) {
-    return this.db.doc("blogs/" + postId).delete();
+  deletePost(postId: string, quiz:string) {
+    return this.db.doc(this.findCollection(quiz) + "/" + postId).delete();
   }
 }

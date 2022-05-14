@@ -101,7 +101,7 @@ const customConfig: ShareButtonsConfig = {
           canActivate: [AuthGuard],
         },
         {
-          path: "editpost/:id",
+          path: "editpost/:id/:quiz",
           component: BlogEditorComponent,
           canActivate: [AdminAuthGuard],
         },
@@ -109,7 +109,7 @@ const customConfig: ShareButtonsConfig = {
           path: "disclaimer",
           component: DisclaimerComponent
         },
-        { path: "blog/:id/:slug", component: BlogComponent },
+        { path: "blog/:id/:quiz/:slug", component: BlogComponent },
         {
           path: "quiz/:id",
           component: BlogCardComponent

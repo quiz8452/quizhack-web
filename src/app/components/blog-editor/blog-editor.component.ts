@@ -21,6 +21,7 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
   postData = new Post();
   formTitle = "Add";
   postId;
+  quiz:string;
   appUser: AppUser;
   private unsubscribe$ = new Subject<void>();
 
@@ -35,6 +36,7 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params: ParamMap) => {
         this.postId = params.get("id");
+        this.quiz = params.get("quiz");
       });
   }
 
@@ -47,7 +49,7 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
     if (this.postId) {
       this.formTitle = "Edit";
       this.blogService
-        .getPostbyId(this.postId)
+        .getPostbyId(this.postId, this.quiz)
         .pipe(takeUntil(this.unsubscribe$))
         .subscribe((result) => {
           this.setPostFormData(result);
@@ -59,6 +61,7 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
     this.postData.content = postFormData.content;
     this.postData.imageUrl = postFormData.imageUrl;
     this.postData.videoId = postFormData.videoId;
+    this.postData.quiz = postFormData.quiz;
     }
 
   saveBlogPost() {
@@ -68,8 +71,9 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
         Date.now(),
         "MM-dd-yyyy HH:mm"
       );
+      
       this.blogService.updatePost(this.postId, this.postData).then(() => {
-        this.router.navigate(["/"]);
+        this.router.navigate(["/quiz/" + this.findPage()]);
       });
     } else {
       this.postData.createdDate = this.datePipe.transform(
@@ -78,7 +82,7 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
       );
       this.postData.author = this.appUser.name;
       this.blogService.createPost(this.postData).then(() => {
-        this.router.navigate(["/"]);
+        this.router.navigate(["/quiz/" + this.findPage()]);
       });
     }
   }
@@ -135,8 +139,12 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
     };
   }
 
+  findPage() {
+    return this.quiz == 'amazon' ? "Amazon" : "Flipkart";
+  }
+
   cancel() {
-    this.router.navigate(["/"]);
+    this.router.navigate(["/quiz/" + this.findPage()]);
   }
 
   ngOnDestroy() {

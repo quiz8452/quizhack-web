@@ -21,10 +21,9 @@
       *ngFor="let post of blogPost | paginate: config"
     >
       <mat-card class="mat-elevation-z2 mb-3">
-        <mat-card-content>
+        <!-- <mat-card-content>
           <a [routerLink]="['/blog/', post.postId, post.title | slug]">
             <div class="view overlay hm-white-slight">
-              <!-- <img width="100%" [src]="post.imageUrl" alt="" height="200px" /> -->
               <a>
                 <div
                   class="mask waves-effect waves-light"
@@ -33,11 +32,11 @@
               </a>
             </div>
           </a>
-        </mat-card-content>
+        </mat-card-content> -->
         <mat-card-content>
           <a
             class="blog-title"
-            [routerLink]="['/blog/', post.postId, post.title | slug]"
+            [routerLink]="['/blog/', post.postId, post.quiz, post.title | slug]"
           >
             <h4>{{ post.title }}</h4>
           </a>
@@ -61,7 +60,7 @@
             <button
               mat-button
               color="accent"
-              [routerLink]="['/editpost', post.postId]"
+              [routerLink]="['/editpost', post.postId, post.quiz]"
             >
               <i class="fa fa-edit" aria-hidden="true"></i>
             </button>
@@ -88,7 +87,7 @@
           <button
             mat-raised-button
             class="app-theme"
-            [routerLink]="['/blog/', post.postId, post.title | slug]"
+            [routerLink]="['/blog/', post.postId, post.quiz, post.title | slug]"
           >
             Read More
           </button>

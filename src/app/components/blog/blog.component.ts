@@ -28,7 +28,8 @@ export class BlogComponent implements OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params: ParamMap) => {
         this.postId = params.get("id");
-        this.postData$ = this.blogService.getPostbyId(this.postId);
+        let quiz = params.get("quiz");
+        this.postData$ = this.blogService.getPostbyId(this.postId, quiz);
       });
       this.setEditorConfig();
   }
