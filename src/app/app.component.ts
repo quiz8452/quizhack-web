@@ -29,5 +29,27 @@ export class AppComponent implements OnInit {
         this.router.navigateByUrl(returnUrl);
       }
     });
+
+
+    let cc = window as any;
+       cc.cookieconsent.initialise({
+         palette: {
+           popup: {
+             background: "#000000"
+           },
+           button: {
+             background: "#ffe000",
+             text: "#164969"
+           }
+         },
+         theme: "classic",
+         content: {
+           message: "This website uses cookies to ensure you get the best expirience on our website.",
+           dismiss: "Got it",
+           link: "Learn more",
+           href: "https://quizhack.in/disclaimer"
+         }
+       });
+
   }
 }

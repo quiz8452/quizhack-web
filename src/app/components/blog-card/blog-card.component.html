@@ -4,7 +4,9 @@
   </div>
 </ng-template>
 
-<h1 class="mt-2">{{ quizTitle }} Quiz</h1>
+<h2 class="mt-2">
+  <strong>{{ quizTitle }} Quiz</strong>
+</h2>
 <hr />
 
 <!-- <header class="d-flex justify-content-center heading-title">
@@ -38,7 +40,7 @@
             class="blog-title"
             [routerLink]="['/blog/', post.postId, post.quiz, post.title | slug]"
           >
-            <h4>{{ post.title }}</h4>
+            <h5>{{ post.title }}</h5>
           </a>
         </mat-card-content>
         <mat-card-content>

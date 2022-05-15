@@ -18,17 +18,21 @@
         />
       </a>
       <div fxShow="true" fxHide.lt-md="true">
-        <button mat-button [routerLink]="['/']">Quiz Hack</button>
+        <button mat-button [routerLink]="['/']">
+          <strong> Quiz Hack</strong>
+        </button>
 
         <button mat-button [routerLink]="['/quiz', 'Amazon']">
-          Amazon Quiz
+          <strong>Amazon Quiz</strong>
         </button>
 
         <button mat-button [routerLink]="['/quiz', 'Flipkart']">
-          Flipkart Quiz
+          <strong> Flipkart Quiz</strong>
         </button>
 
-        <button mat-button [routerLink]="['/disclaimer']">Disclaimer</button>
+        <button mat-button [routerLink]="['/disclaimer']">
+          <strong> Disclaimer </strong>
+        </button>
       </div>
       <!-- <img mat-card-avatar class="user-avatar" src="/src/QUIZHACK.png" /> -->
       <!-- *ngIf="appUser?.isAdmin" -->
@@ -49,7 +53,9 @@
           href="https://play.google.com/store/apps/details?id=com.hostelmanager.quizhackk&hl=en_IN&gl=US"
           target="_blank"
           ><i class="fab fa-google-play" aria-hidden="true"></i>
-          <span fxShow="true" fxHide.lt-md="true">Play Store</span></a
+          <span class="mr-3" fxShow="true" fxHide.lt-md="true"
+            >Play Store</span
+          ></a
         >
       </button>
       <ng-template #anonymousUser>
@@ -88,7 +94,7 @@
           mat-list-item
           [routerLink]="['/']"
         >
-          Home
+          <strong> Home </strong>
         </button>
 
         <button
@@ -97,7 +103,7 @@
           mat-list-item
           [routerLink]="['/quiz', 'Amazon']"
         >
-          Amazon Quiz
+          <strong>Amazon Quiz</strong>
         </button>
 
         <button
@@ -106,7 +112,7 @@
           mat-list-item
           [routerLink]="['/quiz', 'Flipkart']"
         >
-          Flipkart Quiz
+          <strong> Flipkart Quiz</strong>
         </button>
 
         <button
@@ -115,7 +121,7 @@
           mat-list-item
           [routerLink]="['/disclaimer']"
         >
-          Disclaimer
+          <strong> Disclaimer </strong>
         </button>
       </mat-nav-list>
     </mat-sidenav>
