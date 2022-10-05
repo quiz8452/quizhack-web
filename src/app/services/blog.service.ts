@@ -25,7 +25,7 @@ export class BlogService {
 
   getAllPosts(quiz): Observable<Post[]> {
     const blogs = this.db
-      .collection<Post>(this.findCollection(quiz), (ref) => ref.orderBy("createdDate", "desc"))
+      .collection<Post>(this.findCollection(quiz), (ref) => ref.orderBy("createdDate", "desc").orderBy("updatedDate", "desc"))
       .snapshotChanges()
       .pipe(
         map((actions) => {
