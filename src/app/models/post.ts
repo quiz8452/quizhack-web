@@ -4,6 +4,7 @@ export class Post {
     content: string;
     author: string;
     createdDate: any;
+    updatedDate: any;
     imageUrl:string;
     videoId :string;
     quiz :string;

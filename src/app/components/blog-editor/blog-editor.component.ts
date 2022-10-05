@@ -62,12 +62,13 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
     this.postData.imageUrl = postFormData.imageUrl;
     this.postData.videoId = postFormData.videoId;
     this.postData.quiz = postFormData.quiz;
+    this.postData.createdDate = postFormData.createdDate
     }
 
   saveBlogPost() {
     console.log(this.postData, "POSTDATA");
     if (this.postId) {
-      this.postData.createdDate = this.datePipe.transform(
+      this.postData.updatedDate = this.datePipe.transform(
         Date.now(),
         "MM-dd-yyyy HH:mm"
       );
@@ -75,8 +76,13 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
       this.blogService.updatePost(this.postId, this.postData).then(() => {
         this.router.navigate(["/quiz/" + this.findPage()]);
       });
+
     } else {
       this.postData.createdDate = this.datePipe.transform(
+        Date.now(),
+        "MM-dd-yyyy HH:mm"
+      );
+      this.postData.updatedDate = this.datePipe.transform(
         Date.now(),
         "MM-dd-yyyy HH:mm"
       );
@@ -89,7 +95,7 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
 
   setEditorConfig() {
     this.ckeConfig = {
-      // removePlugins: ["ImageUpload", "MediaEmbed", "EasyImage"],
+      removePlugins: ["ImageUpload", "MediaEmbed", "EasyImage"],
       heading: {
         options: [
           {
