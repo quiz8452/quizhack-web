@@ -83,7 +83,7 @@ export class BlogComponent implements OnDestroy {
           { model: "Formatted", view: "pre", title: "Formatted" },
         ],
       },
-      isReadOnly: true,
+      isReadOnly: true
     };
   }
 

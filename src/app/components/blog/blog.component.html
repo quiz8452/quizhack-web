@@ -8,13 +8,13 @@
       class="view hm-zoom z-depth-2"
       style="cursor: pointer"
     >
-      <!-- <img
-          style="margin: auto"
-          [src]="postData.imageUrl"
-          [alt]="postData.title"
-          width="100%"
-          class="image-fluid rounded"
-        /> -->
+      <img
+        style="margin: auto"
+        [src]="postData.imageUrl"
+        [alt]="postData.title"
+        width="100%"
+        class="image-fluid rounded"
+      />
     </div>
   </mat-card-content>
   <mat-card-subtitle class="my-4">
@@ -36,6 +36,7 @@
       [(ngModel)]="postData.content"
       #myckeditor="ngModel"
       debounce="500"
+      [disabled]="true"
       [editor]="Editor"
     ></ckeditor>
     <div style="text-align: center">
