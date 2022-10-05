@@ -55,6 +55,9 @@ export class BlogEditorComponent implements OnInit, OnDestroy {
           this.setPostFormData(result);
         });
     }
+    else {
+        this.postData.content = '<figure class="image"><img src="https://factofacts.com/wp-content/uploads/2020/10/image.png" alt="Amazon Quiz"><figcaption><a href="https://www.amazon.in/b?ie=UTF8&amp;node=14351766031&amp;tag=cuelinkss25719-21&amp;ascsubtag=20221005clsbpk3d9d8v">Start Quiz</a></figcaption></figure><figure class="image"><img src="https://factofacts.com/wp-content/uploads/2021/03/tele_factofacts.png" alt=""></figure><h2><strong>How to Play Amazon Quiz Today?</strong></h2><p>1) You can play quiz only on&nbsp;<strong>Amazon App</strong>, so you have to download &amp; install the&nbsp;<strong>Amazon Android</strong>&nbsp;or&nbsp;<strong>iOS app</strong>&nbsp;from Google Play Store or Apple’s App Store.</p><p>2) Open Amazon App &amp; Sign in into your Amazon Account with registered Email and Password (Create an account if you do not have an existing Amazon account)</p><p>&nbsp;</p><p>3) Now go to the Amazon Quiz page by clicking on the</p><p><strong>Menu&nbsp;&gt; Program &amp; Features &gt;&nbsp;FunZone</strong></p><p>4) Now just click the quiz which you want to complete by tapping the “Start” Button</p><p>5) You have to answer the all questions correctly in the Daily Amazon Quiz in order to be eligible to win exciting prizes</p><p>6) After answering all questions correctly of the quiz, you will be eligible for the Amazon Quiz winners’ lucky draw.</p><p>7) The Amazon Quiz lucky draw winners are announced on the winners list declaration date.</p>'
+    }
   }
   setPostFormData(postFormData) {
     this.postData.title = postFormData.title;

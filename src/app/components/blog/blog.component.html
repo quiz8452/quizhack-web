@@ -9,6 +9,7 @@
       style="cursor: pointer"
     >
       <img
+        *ngIf="postData.imageUrl"
         style="margin: auto"
         [src]="postData.imageUrl"
         [alt]="postData.title"

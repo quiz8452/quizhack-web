@@ -2454,7 +2454,7 @@ class BlogService {
     }
     getAllPosts(quiz) {
         const blogs = this.db
-            .collection(this.findCollection(quiz), (ref) => ref.orderBy("createdDate", "desc"))
+            .collection(this.findCollection(quiz), (ref) => ref.orderBy("createdDate", "desc").orderBy("updatedDate", "desc"))
             .snapshotChanges()
             .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_0__.map)((actions) => {
             return actions.map((c) => (Object.assign({ postId: c.payload.doc["id"] }, c.payload.doc.data())));
